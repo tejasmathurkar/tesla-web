@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="alumnistyle.css" />
+
+	<!-- Vendor CSS Files -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+	<!-- <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" /> -->
+	<!-- <link href="./assets/vendor/venobox/venobox.css" rel="stylesheet" /> -->
+	<!-- <link href="./assets/vendor/owl.carousel/./assets/owl.carousel.min.css" rel="stylesheet" /> -->
+	<!-- <link href="./assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+
+	<title>Alumnae</title>
+	<link href="assets/img/favicon.png" rel="icon">
+</head>
+
+<body>
+	<!--Header-->
+	<section id="navbar">
+		<nav class="navbar navbar-expand-lg">
+			<div class="navbar-brand">
+				<a class="logo mr-auto" href="/"><img src="./assets/img/logo2.png" /><img src="./assets/img/copy.png" /></a>
+			</div>
+		</nav>
+	</section>
+	<section id="Cover-Photo">
+		<div class="Our-Alumni">
+			<h1>OUR ALUMNI</h1>
+		</div>
+	</section>
+
+	<!--Description-->
+	<section id="Description">
+		<div class="section-title">
+			<span>OUR LEADERS</span>
+			<h2>OUR LEADERS</h2>
+		</div>
+		<p>
+			As members of Team Chimera, they made it their duty to design and build
+			a racing car for each of the formula student events we have taken part
+			in. It all started in the year 2006, when a group of young budding
+			engineering students decided to transcend into the automotive sector of
+			hybrid and electrical technology. The team from the batch of 2006 have
+			triumphed and have managed to pass on the baton and the traditions to
+			their juniors who in time have taken up their responsibilities with due
+			diligence and thus the baton of our team’s progress has been passed on
+			from one batch to another, having kept our traditions alive. After 14
+			years from the inception of our team we feel bound to have something as
+			a tribute to our alumni who have put in those efforts to bring our team
+			to where it stands today.
+		</p>
+		<p class="Thank-you">
+			"Thank You Alumnae for building our team to where it stands today!"
+		</p>
+	</section>
+
+	<!--Alumni Details-->
+	<section>
+		<div id="alumniContainer">
+			<div class="flex-container">
+				<div class="al-member" v-for="(member, index) in alumniTeam">
+
+					<div class="photo-container">
+						<img class="photo" v-bind:src="`./assets/img/alumni/`+member.image" />
+						<div class="additional-details" :id="`ad_row`+index">
+							<a v-if="member.subsystem != 'NA'"><b>Worked on:</b> {{member.subsystem}}<br> </a> 
+							 </span>
+							<a v-if="member.currentJob != 'NA' && member.currentLocation != 'NA' &&  member.currentCompany != 'NA'"> <b>Currently:</b> <br> {{member.currentJob}}, <br>{{member.currentCompany}},  <br>{{member.currentLocation}} </a>
+
+						</div>
+					</div>
+					<div class="det-rect">
+
+
+						<div style="flex-basis: 90%">
+							<div class="name">{{member.name}}</div>
+							<div v-if="member.roleInTeam != 'NA'" class="subsystem">{{member.roleInTeam}}</div>
+						</div>
+						<!-- <div class="email"></div> -->
+						<div class="email-linkedin">
+
+						
+							<div v-if="member.linkedIn != 'NA'" class="linkedin" v-on:click="window.open(member.linkedIn)"></div>
+							<div class="info" v-on:click="test(`ad_row`+index)"></div>
+						</div>
+
+						<!-- <a v-bind:href=" mailto:${member.emailId} "></a> -->
+					</div>
+					<p>{{setevent("ad_row"+index)}}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="./assets/vendor/jquery/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+	<script src="./assets/js/alumnidata.js"></script>
+	<script>
+		var prevScrollpos = window.pageYOffset;
+		window.onscroll = function () {
+			var currentScrollPos = window.pageYOffset;
+			if (prevScrollpos < currentScrollPos) {
+				document.getElementById("navbar").style.top = "-90px";
+			}
+			prevScrollpos = currentScrollPos;
+		};
+	</script>
+	<!-- <script type="text/javascript" src="//platform.linkedin.com/in.js">
+		api_key: YOUR_API_KEY_HERE
+		authorize: true
+		onLoad: onLinkedInLoad
+	</script>
+
+	<script type="text/javascript">
+		// Setup an event listener to make an API call once auth is complete
+		function onLinkedInLoad() {
+			IN.Event.on(IN, "auth", getProfileData);
+		}
+
+		// Handle the successful return from the API call
+		function onSuccess(data) {
+			console.log(data);
+		}
+
+		// Handle an error response from the API call
+		function onError(error) {
+			console.log(error);
+		}
+
+		// Use the API call wrapper to request the member's basic profile data
+		function getProfileData() {
+			IN.API.Raw("/people/~").result(onSuccess).error(onError);
+		}
+
+		function test(index) {
+			alert(index);
+		}
+	</script> -->
+</body>
+
+</html>
